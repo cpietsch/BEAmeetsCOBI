@@ -3,10 +3,12 @@
 
 ## Resources
 
-- COBI reference: https://cobi-bike.github.io/COBI.js
-- COBI dev addon: https://chrome.google.com/webstore/detail/cobibike-devkit-simulator/hpdhkapigojggienmiejhblkhenjdbno
-- COBI js: https://github.com/cobi-bike/DevKit
+### COBI
 
+- reference: https://cobi-bike.github.io/COBI.js
+- dev addon: https://chrome.google.com/webstore/detail/cobibike-devkit-simulator/hpdhkapigojggienmiejhblkhenjdbno
+- js: https://github.com/cobi-bike/DevKit
+- UI: https://github.com/cobi-bike/DevKit-UI
 
 ## Build Setup
 
