@@ -4,31 +4,31 @@
           <div class="content-padded right">
             <p class="content-padded text-center">
               <img @click="call" class="icon" src="@/components/assets/bea-icon.png">
+              <vue-circle
+                      :progress="100"
+                      :size="200"
+                      :reverse="false"
+                      line-cap="round"
+                      :fill="{ color: '#000' }"
+                      empty-fill="rgba(0, 0, 0, .1)"
+                      :animation-start-value="0.0"
+                      :start-angle="0"
+                      insert-mode="append"
+                      :thickness="10"
+                      :show-percent="false"
+                      :animation="{ duration: 10000, easing: 'linear' }"
+                      @vue-circle-end="progress_end"
+                      class="circle"
+                      v-if="fallDeteced"
+                      >
+
+                    </vue-circle>
             </p>
-            <button class="btn" @click="call" v-if="!fallDeteced && !calling">Call for Emergency</button>
-            <button class="btn" @click="cancelCall" v-if="fallDeteced && !calling">Cancel Call</button>
-            <button class="btn" @click="cancelCall" v-if="calling">Calling Bosch Emergency Assistant...</button>
+            <button class="btn" @click="call" v-if="!fallDeteced && !calling">Trigger emergency event</button>
+            <button class="btn" @click="cancelCall" v-if="fallDeteced && !calling">Cancel emergency event</button>
+            <button class="btn" @click="cancelCall" v-if="calling">Contacting Bosch Emergency Assistant...</button>
             <p class="content-padded text-center" v-if="calling">Help is on the way, try to stay cool</p>
             <!-- <button class="btn "></button> -->
-            <vue-circle
-                    :progress="100"
-                    :size="200"
-                    :reverse="false"
-                    line-cap="round"
-                    :fill="{ color: '#000' }"
-                    empty-fill="rgba(0, 0, 0, .1)"
-                    :animation-start-value="0.0"
-                    :start-angle="0"
-                    insert-mode="append"
-                    :thickness="10"
-                    :show-percent="false"
-                    :animation="{ duration: 10000, easing: 'linear' }"
-                    @vue-circle-end="progress_end"
-                    class="circle"
-                    v-if="fallDeteced"
-                    >
-
-                  </vue-circle>
           </div>
         <!--   <div class="content-padded">
             <p class="content-padded text-center" v-if="fallDeteced">DID YOU FALL ?</p>
@@ -73,7 +73,7 @@ export default {
       beta: 0,
       gamma: 0,
       progress: 50,
-      test: false,
+      test: true,
       cancel: false,
       calling: false
     }
@@ -117,6 +117,7 @@ export default {
 }
 
 
+/* eslint-disable */
 
 var data = JSON.stringify({
   "version": "3.0",
@@ -168,7 +169,7 @@ function callBEA() {
 
   xhr.send(data);
 }
-
+/* eslint-enable */
 
 </script>
 
@@ -200,9 +201,10 @@ function callBEA() {
   }
   .circle {
     position: absolute;
-    top: 50%;
+    margin-left: -200px;
+    /*top: 50%;
     left: 50%;
-    transform: translate(-100px,-132px);
+    transform: translate(-100px,-132px);*/
   }
   .fall {
     opacity: 1;
