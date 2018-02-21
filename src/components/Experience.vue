@@ -1,15 +1,18 @@
 <template>
-    <div class="test">
+    <div class="Experience">
+      <div class="content gray">
 
+        </div>
     </div>
 </template>
 
 <script>
+
 import { mapState } from 'vuex'
 
 
 export default {
-  name: 'test',
+  name: 'Experience',
   props: [],
   computed: {
     ...mapState({
@@ -17,17 +20,11 @@ export default {
     })
   },
   methods: {
-    login: function () {
 
-    },
-    test: function () {
-
-    }
   },
   mounted () {
-
-      console.log(this.$store.state)
-
+      const view = COBI.parameters.state()
+      console.log(view)
   }
 }
 </script>
