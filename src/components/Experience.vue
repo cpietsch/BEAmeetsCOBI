@@ -73,7 +73,7 @@ export default {
       beta: 0,
       gamma: 0,
       progress: 50,
-      test: true,
+      test: false,
       cancel: false,
       calling: false
     }
@@ -93,7 +93,10 @@ export default {
     call: function () {
       console.log('call')
       this.calling = true
-      callBEA()
+      ajaxFetch().then(_ => {
+        console.log('working')
+      })
+      // callBEA()
       // this.progress = 100
     },
     cancelCall: function () {
@@ -114,6 +117,63 @@ export default {
       window.addEventListener('deviceorientation', this.handleOrientation)
 
   }
+}
+
+function ajaxFetch () {
+
+    var data = JSON.stringify({
+      'version': '3.0',
+      'msisdn': '+4915771707061',
+      'identifier': '8e4ebdabce5cdeb6a7d2eb14d47e6cc46fe754e29b23bba5b4cf2a80215ed104',
+      'tenant_key': 'BSO16',
+      'monitoringRequestFlag': false,
+      'msd': {
+        'geoPosition': {
+          'accuracyLevel': 'low',
+          'timeStamp': '2018-02-22T13:54:34.165Z',
+          'latitude': 52.498301,
+          'longitude': 13.375681,
+          'accuracy': 1000,
+          'direction': 0
+        },
+        'language': 'de_DE',
+        'timeStamp': '2018-02-22T13:54:41.181Z',
+        'control_type': 0,
+        'trigger_type': 'auto',
+        'event_type': 2,
+        'call_handling': 'callback',
+        'event_context_info': [
+          'some-id-of-involved-user',
+          'some-id-of-involved-user'
+        ],
+        'event_cause': 2,
+        'test': true
+      }
+    });
+
+    let myHeaders = new Headers()
+    myHeaders.set('Accept', 'application/json; charset=utf-8n')
+    myHeaders.set('Content-Type', 'application/json')
+
+    myHeaders.set('bes-tenant-id', 'b1433144-8dc5-4067-a38e-7c95c74d8c95')
+    myHeaders.set('content-type', 'application/json')
+    myHeaders.set('authorization', 'BES-ACCESS-KEY x8IEh2zr3RBqySu5SpXfmEOfvidP28xfNs0apj0Rr0a0CSwFNtmp7vYIMol7xP11')
+    // myHeaders.set('cache-control', 'no-cache')
+    // myHeaders.set('postman-token', '7ec51337-4470-6950-a50d-1d99b3488a09')
+
+    // TODO dev CORS
+    // looks like the api is now working with cors
+    return fetch(
+        'https://gate-stage-bea.s-apps.de1.bosch-iot-cloud.com/bes/v1/event',
+        {
+            method: 'POST',
+            headers: myHeaders,
+            mode: 'cors',
+            cache: 'default',
+            body: data
+        }
+    ).then(res => res.json())
+
 }
 
 
@@ -201,7 +261,7 @@ function callBEA() {
   }
   .circle {
     position: absolute;
-    margin-left: -200px;
+    margin-left: -205px;
     /*top: 50%;
     left: 50%;
     transform: translate(-100px,-132px);*/
