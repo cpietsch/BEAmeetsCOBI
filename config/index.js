@@ -50,7 +50,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: process.env.DEPLOY ? '/nuudle-mwc/' : '/',
+    assetsPublicPath: process.env.DEPLOY ? '/BEAmeetsCOBI/' : '/',
 
     /**
      * Source Maps
