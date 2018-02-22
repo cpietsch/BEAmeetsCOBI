@@ -1,5 +1,8 @@
 <template>
     <div class="Experience">
+      <div class="background">
+        <p v-for="(log, i) in logs" :key="i">{{ log }}</p>
+      </div>
       <div class="content gray">
           <div class="content-padded right">
             <p class="content-padded text-center">
@@ -75,7 +78,8 @@ export default {
       progress: 50,
       test: false,
       cancel: false,
-      calling: false
+      calling: false,
+      logs: []
     }
   },
   watch: {
@@ -112,7 +116,22 @@ export default {
   },
   mounted () {
       const view = COBI.parameters.state()
-      console.log(view)
+      // console.log(this.$refs.background)
+
+      // const background = this.$refs.background
+
+      COBI.hub.externalInterfaceAction.subscribe((action) => {
+        // this.logs.push(action)
+        // background.insertAdjacentHTML('afterend', '<p>' + action + '</p>');
+        console.log('action', action)
+        if (action === 'SELECT') {
+          if (this.calling) {
+            this.cancelCall()
+          } else {
+            this.call()
+          }
+        }
+      })
 
       window.addEventListener('deviceorientation', this.handleOrientation)
 
@@ -149,7 +168,7 @@ function ajaxFetch () {
         'event_cause': 2,
         'test': true
       }
-    });
+    })
 
     let myHeaders = new Headers()
     myHeaders.set('Accept', 'application/json; charset=utf-8n')
@@ -211,5 +230,9 @@ function ajaxFetch () {
   }
   .fall {
     opacity: 1;
+  }
+  .background {
+    position: absolute;
+    opacity: 0.1;
   }
 </style>
