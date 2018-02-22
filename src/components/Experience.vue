@@ -3,7 +3,7 @@
       <div class="background">
         <p v-for="(log, i) in logs" :key="i">{{ log }}</p>
       </div>
-      <div class="content gray">
+      <div :class="['content gray', calling ? 'calling' : '', fallDeteced ? 'fall' : '']">
           <div class="content-padded right">
             <p class="content-padded text-center">
               <img @click="call" class="icon" src="@/components/assets/bea-icon.png">
@@ -196,6 +196,12 @@ function ajaxFetch () {
 </script>
 
 <style scoped>
+  .calling {
+    background: #b72e35;
+  }
+  .fall {
+    background: #d6404740;
+  }
   .right {
     /*width: 500px;
     float: right;*/

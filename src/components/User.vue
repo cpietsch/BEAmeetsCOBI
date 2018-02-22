@@ -7,7 +7,7 @@
             </p>
           </div>
           <div class="content-padded">
-            <p class="content-padded text-center">Welcome Herbert Meier!</p>
+            <p class="content-padded text-center">Welcome Christopher Pietsch!</p>
             <p class="content-padded text-center">You now are in the comfort of calling an emergency assistant from within COBI!</p>
             <p class="content-padded text-center">Unsere Agenten sind rund um die Uhr erreichbar, um Ihren Kunden im Notfall zu helfen.</p>
           </div>
