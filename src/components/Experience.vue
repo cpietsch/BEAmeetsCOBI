@@ -161,8 +161,6 @@ function ajaxFetch () {
     // myHeaders.set('cache-control', 'no-cache')
     // myHeaders.set('postman-token', '7ec51337-4470-6950-a50d-1d99b3488a09')
 
-    // TODO dev CORS
-    // looks like the api is now working with cors
     return fetch(
         'https://gate-stage-bea.s-apps.de1.bosch-iot-cloud.com/bes/v1/event',
         {
@@ -175,61 +173,6 @@ function ajaxFetch () {
     ).then(res => res.json())
 
 }
-
-
-/* eslint-disable */
-
-var data = JSON.stringify({
-  "version": "3.0",
-  "msisdn": "+4915771707061",
-  "identifier": "8e4ebdabce5cdeb6a7d2eb14d47e6cc46fe754e29b23bba5b4cf2a80215ed104",
-  "tenant_key": "BSO16",
-  "monitoringRequestFlag": false,
-  "msd": {
-    "geoPosition": {
-      "accuracyLevel": "low",
-      "timeStamp": "2018-02-22T13:54:34.165Z",
-      "latitude": 52.498301,
-      "longitude": 13.375681,
-      "accuracy": 1000,
-      "direction": 0
-    },
-    "language": "de_DE",
-    "timeStamp": "2018-02-22T13:54:41.181Z",
-    "control_type": 0,
-    "trigger_type": "auto",
-    "event_type": 2,
-    "call_handling": "callback",
-    "event_context_info": [
-      "some-id-of-involved-user",
-      "some-id-of-involved-user"
-    ],
-    "event_cause": 2,
-    "test": true
-  }
-});
-
-function callBEA() {
-  var xhr = new XMLHttpRequest();
-  xhr.withCredentials = true;
-
-  xhr.addEventListener("readystatechange", function () {
-    if (this.readyState === 4) {
-      console.log(this.responseText);
-    }
-  });
-
-  xhr.open("POST", "https://gate-stage-bea.s-apps.de1.bosch-iot-cloud.com/bes/v1/event");
-  xhr.setRequestHeader( 'Access-Control-Allow-Origin', '*');
-  xhr.setRequestHeader("bes-tenant-id", "b1433144-8dc5-4067-a38e-7c95c74d8c95");
-  xhr.setRequestHeader("content-type", "application/json");
-  xhr.setRequestHeader("authorization", "BES-ACCESS-KEY x8IEh2zr3RBqySu5SpXfmEOfvidP28xfNs0apj0Rr0a0CSwFNtmp7vYIMol7xP11");
-  xhr.setRequestHeader("cache-control", "no-cache");
-  xhr.setRequestHeader("postman-token", "7ec51337-4470-6950-a50d-1d99b3488a09");
-
-  xhr.send(data);
-}
-/* eslint-enable */
 
 </script>
 
